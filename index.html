@@ -10,38 +10,47 @@
     <div class="wrapper">
       <div class="header">
         <span class="title">Cassie's Lab</span>
-        <br />Help Cassie identify the unknown element
+        <br />Help Cassie Chemist identify the unknown element
       </div>
       <div class="graphic"><img src="Science-Girl.svg" /></div>
       <div class="ui">
         <div class="msg" id="message">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos neque
-          sed quis ipsa repellat, ea hic modi consectetur velit? Aperiam?
+          In the box below, enter the atomic number for the element you wish to
+          test.
         </div>
         <div class="input">
-          <input class="textBox" type="text" placeholder="Enter # Here" />
+          <input
+            class="textBox"
+            id="textBox"
+            type="text"
+            placeholder="Enter # Here"
+          />
         </div>
         <div class="submit">
-          <button class="btnFushia">Click to Test!</button>
+          <button class="btnFushia" id="submit">Click to Test!</button>
+          <button class="btnFushia" id="reset" style="display: none">
+            Click to Play Again!
+          </button>
         </div>
         <div class="hint">
-          <button class="btnOrange">Click for Hint</button>
+          <button class="btnOrange" id="hint">Click for Hint</button>
         </div>
       </div>
       <div class="result">
-        <div class="largeTile">
-          <div class="largeTileNumber">59</div>
-          <div class="largeTileSymbol">Pr</div>
-          <div class="largeTileName">Praseodynium</div>
+        <div class="largeTile" id="largeTile">
+          <div class="largeTileNumber" id="number"></div>
+          <div class="largeTileSymbol" id="symbol">?</div>
+          <div class="largeTileName" id="name"></div>
         </div>
       </div>
+      <div class="hTitle">Previous Test Results</div>
       <div class="history">
         <div class="historyDivs">
           <div class="legend">
             <table style="height: 100%">
               <tr>
                 <td></td>
-                <td style="text-align: left; font-weight: bold">Legend</td>
+                <td style="text-align: left; font-weight: bold">LEGEND</td>
               </tr>
               <tr>
                 <td class="deepBlue legendBox"></td>
@@ -62,16 +71,29 @@
             </table>
           </div>
           <div class="test" id="t0">
-            <div class="aNum">59</div>
-            <div class="symbol">Pr</div>
+            <div class="aNum" id="t0Num"></div>
+            <div class="symbol" id="t0Symbol">?</div>
           </div>
-          <div class="test" id="t1">test1</div>
-          <div class="test" id="t2">test2</div>
-          <div class="test" id="t3">test3</div>
-          <div class="extraInfo">extraInfo</div>
+          <div class="test" id="t1">
+            <div class="aNum" id="t1Num"></div>
+            <div class="symbol" id="t1Symbol">?</div>
+          </div>
+          <div class="test" id="t2">
+            <div class="aNum" id="t2Num"></div>
+            <div class="symbol" id="t2Symbol">?</div>
+          </div>
+          <div class="test" id="t3">
+            <div class="aNum" id="t3Num"></div>
+            <div class="symbol" id="t3Symbol">?</div>
+          </div>
+          <div class="extraInfo">
+            Click Here for a link to the periodic table
+          </div>
         </div>
       </div>
       <div class="footer"></div>
     </div>
+
+    <script src="/pt-guessing-game.js"></script>
   </body>
 </html>

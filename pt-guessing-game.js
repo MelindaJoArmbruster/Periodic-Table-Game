@@ -120,7 +120,7 @@ let ptObj = {
 };
 
 function generateWinningNumber() {
-  return Math.ceil(Math.random() * 100);
+  return Math.ceil(Math.random() * 118);
 }
 
 function shuffle(array) {
@@ -199,52 +199,104 @@ class Game {
   }
 }
 
+class PtGame extends Game {
+  constructor() {
+    super();
+    this.testResults = [];
+  }
+
+  playersGuessSubmission(num) {
+    if (num < 1 || num > 118 || typeof num !== "number") {
+      throw "That is an invalid atomic number.";
+    } else {
+      this.playersGuess = num;
+      return this.checkGuess(num);
+    }
+  }
+
+  checkGuess(num) {
+    if (this.playersGuess === this.winningNumber) {
+      this.pastGuesses.push(num);
+      return "Eureka! You've identified the unknown element!";
+    } else if (this.pastGuesses.includes(num)) {
+      return "You have already tested that element.";
+    } else {
+      this.pastGuesses.push(num);
+      if (this.pastGuesses.length >= 5) {
+        //how to add color and pop lg elem when losing???
+        return "Oh no, you're out of tests! Try again!";
+      } else {
+        if (this.difference() < 10) {
+          this.testResults.push("#f17777");
+          return "You're burning up!";
+        } else if (this.difference() < 25) {
+          this.testResults.push("#f9c8c8");
+          return "You're lukewarm!";
+        } else if (this.difference() < 50) {
+          this.testResults.push("#78c1f9");
+          return "You're a bit chilly!";
+        } else {
+          this.testResults.push("#1e98f6");
+          return "You're ice cold!";
+        }
+      }
+    }
+  }
+}
+
 function newGame() {
-  return new Game();
+  return new PtGame();
 }
 
 function playGame() {
   let game = newGame();
-  document.getElementById("guess").value = "";
+  document.getElementById("textBox").value = "";
   let submitButton = document.getElementById("submit");
   let hintButton = document.getElementById("hint");
   let resetButton = document.getElementById("reset");
 
   submitButton.addEventListener("click", () => {
-    playersGuess = +document.getElementById("guess").value;
-    document.getElementById("guess").value = "";
+    playersGuess = +document.getElementById("textBox").value;
+    document.getElementById("textBox").value = "";
 
-    document.getElementById(
-      "playersMessage"
-    ).innerHTML = game.playersGuessSubmission(playersGuess);
+    document.getElementById("message").innerHTML = game.playersGuessSubmission(
+      playersGuess
+    );
 
     if (
-      document.getElementById("playersMessage").innerHTML === "You Lose." ||
-      document.getElementById("playersMessage").innerHTML === "You Win!"
+      document.getElementById("message").innerHTML ===
+        "Oh no, you're out of tests! Try again!" ||
+      document.getElementById("message").innerHTML ===
+        "Eureka! You've identified the unknown element!"
     ) {
-      document.getElementById("guessInputArea").style.visibility = "hidden";
-    }
-
-    if (game.pastGuesses.length > 0) {
-      document.getElementById("previousGuessesTitle").style.visibility =
-        "visible";
+      document.getElementById("submit").style.display = "none";
+      document.getElementById("reset").style.display = "inline";
+      document.getElementById("textBox").style.display = "none";
+      document.getElementById("hint").style.display = "none";
     }
 
     game.pastGuesses.forEach((guess, i) => {
-      document.getElementById(`g${i + 1}`).innerHTML = guess;
+      document.getElementById("number").innerHTML = guess;
+      document.getElementById(`t${i}Num`).innerHTML = guess;
+      document.getElementById("symbol").innerHTML = ptObj[guess][0];
+      document.getElementById(`t${i}Symbol`).innerHTML = ptObj[guess][0];
+      document.getElementById("name").innerHTML = ptObj[guess][1];
+    });
+
+    game.testResults.forEach((result, i) => {
+      document.getElementById(`t${i}`).style.backgroundColor = result;
     });
   });
 
   hintButton.addEventListener("click", () => {
     hintArr = game.provideHint();
     alert(
-      `One of these is the winning number! ${hintArr[0]}, ${hintArr[1]}, ${hintArr[2]}`
+      `One of these is correct atomic number! ${hintArr[0]}, ${hintArr[1]}, ${hintArr[2]}`
     );
   });
 
   resetButton.addEventListener("click", () => {
     document.location.reload();
-    //document.getElementById("guess").innerHTML = "";
   });
 }
 playGame();

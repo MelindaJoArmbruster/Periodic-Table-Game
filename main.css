@@ -10,8 +10,8 @@
   --main-light-red: #f9c8c8;
   --main-light-yellow: #ffff62;
   --main-purple: #6262ff;
-  --main-orange: #f67c1e;
-  --main-fushia: #a71893;
+  --main-orange: #ff721e;
+  --main-fushia: #af2f9d;
 
   font-family: "Brush Script MT", cursive;
 }
@@ -26,10 +26,11 @@ body {
   margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 150px 341px 150px 30px;
+  grid-template-rows: 150px 341px 30px 150px 30px;
   grid-template-areas:
     "header header header"
     "graphic ui result"
+    "hTitle hTitle hTitle"
     "history history history"
     "footer footer footer";
 }
@@ -74,7 +75,7 @@ body {
 }
 
 .largeTile {
-  background-color: var(--main-med-red);
+  background-color: white;
   border: 10px solid black;
   height: 100%;
   width: 100%;
@@ -129,6 +130,7 @@ body {
 }
 
 .textBox {
+  text-align: center;
   width: 80%;
   height: 42%;
   border: 4px solid black;
@@ -169,6 +171,13 @@ body {
   border-radius: 10px;
 }
 
+.hTitle {
+  text-align: center;
+  font-weight: bold;
+  background-color: var(--main-light-green);
+  grid-area: hTitle;
+  padding-top: 5px;
+}
 .history {
   grid-area: history;
   background-color: var(--main-light-green);
@@ -192,7 +201,7 @@ body {
   width: 80%;
   display: flex;
   padding-left: 30px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .legendBox {
@@ -217,11 +226,12 @@ body {
 .test {
   height: 75%;
   width: 75%;
-  padding: 3px;
-  margin-top: 11px;
+  padding: 5px;
+  margin-top: 14px;
   font-weight: bold;
   box-sizing: border-box;
   justify-content: center;
+  background-color: white;
   font-family: Arial, Helvetica, sans-serif;
   border: 5px solid black;
   display: grid;
