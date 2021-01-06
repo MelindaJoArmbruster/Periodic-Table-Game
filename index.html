@@ -10,7 +10,7 @@
     <div class="wrapper">
       <div class="header">
         <span class="title">Cassie's Lab</span>
-        <h2>Help Cassie identify the unknown element!</h2>
+        <br />Help Cassie identify the unknown element
       </div>
       <div class="graphic"><img src="Science-Girl.svg" /></div>
       <div class="ui">
@@ -18,9 +18,15 @@
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos neque
           sed quis ipsa repellat, ea hic modi consectetur velit? Aperiam?
         </div>
-        <div class="input"><input class="textBox" type="text" /></div>
-        <div class="submit"><button>Analyze</button></div>
-        <div class="hint"><button>Hint</button></div>
+        <div class="input">
+          <input class="textBox" type="text" placeholder="Enter # Here" />
+        </div>
+        <div class="submit">
+          <button class="btnFushia">Click to Test!</button>
+        </div>
+        <div class="hint">
+          <button class="btnOrange">Click for Hint</button>
+        </div>
       </div>
       <div class="result">
         <div class="largeTile">
@@ -29,7 +35,42 @@
           <div class="largeTileName">Praseodynium</div>
         </div>
       </div>
-      <div class="history"></div>
+      <div class="history">
+        <div class="historyDivs">
+          <div class="legend">
+            <table style="height: 100%">
+              <tr>
+                <td></td>
+                <td style="text-align: left; font-weight: bold">Legend</td>
+              </tr>
+              <tr>
+                <td class="deepBlue legendBox"></td>
+                <td>You're ice cold!</td>
+              </tr>
+              <tr>
+                <td class="lightBlue legendBox"></td>
+                <td>You're a bit chilly!</td>
+              </tr>
+              <tr>
+                <td class="lightRed legendBox"></td>
+                <td>You're lukewarm!</td>
+              </tr>
+              <tr>
+                <td class="medRed legendBox"></td>
+                <td>You're burning up!</td>
+              </tr>
+            </table>
+          </div>
+          <div class="test" id="t0">
+            <div class="aNum">59</div>
+            <div class="symbol">Pr</div>
+          </div>
+          <div class="test" id="t1">test1</div>
+          <div class="test" id="t2">test2</div>
+          <div class="test" id="t3">test3</div>
+          <div class="extraInfo">extraInfo</div>
+        </div>
+      </div>
       <div class="footer"></div>
     </div>
   </body>
