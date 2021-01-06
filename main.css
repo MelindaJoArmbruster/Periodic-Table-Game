@@ -59,8 +59,46 @@ body {
 }
 
 .result {
+  background-color: var(--main-light-yellow);
   grid-area: result;
-  background-color: var(--main-purple);
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.largeTile {
+  background-color: var(--main-med-red);
+  border: 10px solid black;
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-areas:
+    "largeTileNumber"
+    "largeTileSymbol"
+    "largeTileName";
+}
+
+.largeTileNumber {
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.largeTileSymbol {
+  font-weight: bold;
+  font-size: 11em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.largeTileName {
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
 }
 
 .history {
@@ -70,15 +108,18 @@ body {
 
 .footer {
   grid-area: footer;
-  background-color: var(--main-med-red);
+  background-color: var(--main-green);
 }
 
 .msg {
   grid-area: msg;
   padding: 10px;
-  display: table-cell;
+  /* display: table-cell;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: middle; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 20px;
   background-color: var(--main-light-yellow);
 }
