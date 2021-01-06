@@ -1,0 +1,103 @@
+:root {
+  --main-background-color: #cccccc;
+  --main-green: #18a774;
+  --main-deep-blue: #1e98f6;
+  --main-light-blue: #99d0fb;
+  --main-deep-red: #e01616;
+  --main-med-red: #f17777;
+  --main-light-red: #fdebeb;
+  --main-light-yellow: #ffff62;
+  --main-purple: #6262ff;
+
+  --main-font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--main-background-color);
+}
+
+#container {
+  background-color: white;
+  width: 800px;
+  margin: auto;
+}
+
+header {
+  height: 133px;
+  width: 100%;
+}
+
+footer {
+  height: 20px;
+  width: 100%;
+}
+
+#centerField {
+  background-color: var(--main-light-blue);
+  width: 100%;
+  height: 267px;
+}
+
+#graphic {
+  background-color: var(--main-light-red);
+  width: 33%;
+  /* height: 100%; */
+  display: inline-block;
+}
+
+#inputAndMessageArea {
+  background-color: var(--main-purple);
+  width: 33%;
+  height: 100%;
+  display: inline-block;
+}
+
+#messageArea {
+  /* height: 66%;
+  width: 100%;
+  display: block; */
+}
+
+#inputArea {
+  /* height: 33%;
+  width: 100%;
+  display: block; */
+}
+
+.btn {
+  width: 75px;
+}
+
+#elementBox {
+  background-color: var(--main-light-yellow);
+  width: 33%;
+  height: 100%;
+  display: inline-block;
+}
+
+#bottomField {
+  background-color: var(--main-med-red);
+  height: 132px;
+  width: 100%;
+}
+
+#btmMessageArea {
+  background-color: var(--main-deep-blue);
+  width: 25%;
+  height: 100%;
+  display: inline-block;
+}
+
+#btmPrevGuessesArea {
+  background-color: var(--main-deep-red);
+  width: 49%;
+  height: 100%;
+  display: inline-block;
+}
+
+#btmExtraInfoArea {
+  background-color: var(--main-green);
+  width: 25%;
+  height: 100%;
+  display: inline-block;
+}

@@ -1,0 +1,103 @@
+:root {
+  --main-background-color: #cccccc;
+  --main-green: #18a774;
+  --main-deep-blue: #1e98f6;
+  --main-light-blue: #99d0fb;
+  --main-deep-red: #e01616;
+  --main-med-red: #f17777;
+  --main-light-red: #fdebeb;
+  --main-light-yellow: #ffff62;
+  --main-purple: #6262ff;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--main-background-color);
+}
+
+.wrapper {
+  background-color: white;
+  width: 1024px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 150px 341px 150px 30px;
+  grid-template-areas:
+    "header header header"
+    "graphic ui result"
+    "history history history"
+    "footer footer footer";
+}
+
+.header {
+  grid-area: header;
+  background-color: var(--main-green);
+  text-align: center;
+  padding: 15px;
+}
+
+.title {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.graphic {
+  grid-area: graphic;
+  background-color: var(--main-light-yellow);
+  padding: 20px;
+}
+
+.ui {
+  grid-area: ui;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  grid-template-areas:
+    "msg msg msg"
+    "input submit hint";
+}
+
+.result {
+  grid-area: result;
+  background-color: var(--main-purple);
+}
+
+.history {
+  grid-area: history;
+  background-color: var(--main-deep-blue);
+}
+
+.footer {
+  grid-area: footer;
+  background-color: var(--main-med-red);
+}
+
+.msg {
+  grid-area: msg;
+  padding: 10px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+  background-color: var(--main-light-yellow);
+}
+
+.input {
+  grid-area: input;
+  background-color: var(--main-med-red);
+}
+
+.textBox {
+  width: 50px;
+}
+
+.submit {
+  grid-area: submit;
+  background-color: var(--main-green);
+}
+
+.hint {
+  grid-area: hint;
+  background-color: var(--main-light-blue);
+}
