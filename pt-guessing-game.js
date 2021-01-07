@@ -226,21 +226,21 @@ class PtGame extends Game {
 
       if (this.difference() < 10) {
         this.testResults.push("#f17777");
-        feedback = "You're burning up!";
+        feedback = "Burning up!";
       } else if (this.difference() < 25) {
         this.testResults.push("#f9c8c8");
-        feedback = "You're lukewarm!";
+        feedback = "Lukewarm!";
       } else if (this.difference() < 50) {
         this.testResults.push("#78c1f9");
-        feedback = "You're a bit chilly!";
+        feedback = "A bit chilly!";
       } else {
         this.testResults.push("#1e98f6");
-        feedback = "You're ice cold!";
+        feedback = "Ice cold!";
       }
     }
 
     if (this.pastGuesses.length >= 5) {
-      feedback = "Oh no, you're out of tests! Try again!";
+      feedback = "Oh no, she's out of tests! Play again!";
     }
     return feedback;
   }
@@ -268,7 +268,7 @@ function playGame() {
 
     if (
       document.getElementById("message").innerHTML ===
-        "Oh no, you're out of tests! Try again!" ||
+        "Oh no, you're out of tests! Play again!" ||
       document.getElementById("message").innerHTML ===
         "Eureka! You've identified the unknown element!"
     ) {
@@ -286,14 +286,23 @@ function playGame() {
     let currTestResult = game.testResults[game.testResults.length - 1];
     document.getElementById("largeTile").style.backgroundColor = currTestResult;
 
-    game.pastGuesses.forEach((guess, i) => {
+    // game.pastGuesses.forEach((guess, i) => {
+    //   document.getElementById(`t${i}Num`).innerHTML = guess;
+    //   document.getElementById(`t${i}Symbol`).innerHTML = ptObj[guess][0];
+    // });
+
+    for (let i = 0; i < game.pastGuesses.length - 2; i++) {
       document.getElementById(`t${i}Num`).innerHTML = guess;
       document.getElementById(`t${i}Symbol`).innerHTML = ptObj[guess][0];
-    });
+    }
 
-    game.testResults.forEach((result, i) => {
+    // game.testResults.forEach((result, i) => {
+    //   document.getElementById(`t${i}`).style.backgroundColor = result;
+    // });
+
+    for (let i = 0; i < game.testResults.length - 2; i++) {
       document.getElementById(`t${i}`).style.backgroundColor = result;
-    });
+    }
   });
 
   hintButton.addEventListener("click", () => {
