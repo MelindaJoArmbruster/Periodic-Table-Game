@@ -111,7 +111,9 @@ body {
 
 .footer {
   grid-area: footer;
+  color: var(--main-light-yellow);
   background-color: var(--main-green);
+  text-align: center;
 }
 
 .msg {
@@ -255,4 +257,14 @@ body {
 .symbol {
   text-align: center;
   font-size: 50px;
+}
+
+#ptLink {
+  display: block;
+  color: var(--main-fushia);
+}
+
+#linkedInLogo {
+  height: 32px;
+  width: 32px;
 }

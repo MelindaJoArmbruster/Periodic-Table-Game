@@ -226,21 +226,21 @@ class PtGame extends Game {
 
       if (this.difference() < 10) {
         this.testResults.push("#f17777");
-        feedback = "Burning up!";
+        feedback = "You're burning up!";
       } else if (this.difference() < 25) {
         this.testResults.push("#f9c8c8");
-        feedback = "Lukewarm!";
+        feedback = "You're lukewarm!";
       } else if (this.difference() < 50) {
         this.testResults.push("#78c1f9");
-        feedback = "A bit chilly!";
+        feedback = "You're a bit chilly!";
       } else {
         this.testResults.push("#1e98f6");
-        feedback = "Ice cold!";
+        feedback = "You're ice cold!";
       }
     }
 
     if (this.pastGuesses.length >= 5) {
-      feedback = "Oh no, she's out of tests! Play again!";
+      feedback = "Oh no, you're out of tests! Play again!";
     }
     return feedback;
   }
@@ -259,7 +259,6 @@ function playGame() {
 
   submitButton.addEventListener("click", () => {
     playersGuess = +document.getElementById("textBox").value;
-    //alert(playersGuess + " " + typeof playersGuess);
     document.getElementById("textBox").value = "";
 
     document.getElementById("message").innerHTML = game.playersGuessSubmission(
@@ -286,30 +285,21 @@ function playGame() {
     let currTestResult = game.testResults[game.testResults.length - 1];
     document.getElementById("largeTile").style.backgroundColor = currTestResult;
 
-    // game.pastGuesses.forEach((guess, i) => {
-    //   document.getElementById(`t${i}Num`).innerHTML = guess;
-    //   document.getElementById(`t${i}Symbol`).innerHTML = ptObj[guess][0];
-    // });
-
-    for (let i = 0; i < game.pastGuesses.length - 2; i++) {
+    game.pastGuesses.forEach((guess, i) => {
       document.getElementById(`t${i}Num`).innerHTML = guess;
       document.getElementById(`t${i}Symbol`).innerHTML = ptObj[guess][0];
-    }
+    });
 
-    // game.testResults.forEach((result, i) => {
-    //   document.getElementById(`t${i}`).style.backgroundColor = result;
-    // });
-
-    for (let i = 0; i < game.testResults.length - 2; i++) {
+    game.testResults.forEach((result, i) => {
       document.getElementById(`t${i}`).style.backgroundColor = result;
-    }
+    });
   });
 
   hintButton.addEventListener("click", () => {
     hintArr = game.provideHint();
-    alert(
-      `One of these is correct atomic number! ${hintArr[0]}, ${hintArr[1]}, ${hintArr[2]}`
-    );
+    document.getElementById(
+      "message"
+    ).innerHTML = `One of these is correct atomic number! ${hintArr[0]}, ${hintArr[1]}, ${hintArr[2]}`;
   });
 
   resetButton.addEventListener("click", () => {
