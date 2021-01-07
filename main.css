@@ -38,6 +38,7 @@ body {
 .header {
   grid-area: header;
   background-color: var(--main-green);
+  color: var(--main-light-yellow);
   text-align: center;
   padding: 15px;
 }
@@ -68,7 +69,7 @@ body {
   background-color: var(--main-light-yellow);
   font-family: Arial, Helvetica, sans-serif;
   grid-area: result;
-  padding: 25px;
+  padding: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,12 +92,12 @@ body {
 
 .largeTileNumber {
   font-weight: bold;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .largeTileSymbol {
   font-weight: bold;
-  font-size: 11em;
+  font-size: 9em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -174,20 +175,20 @@ body {
 .hTitle {
   text-align: center;
   font-weight: bold;
-  background-color: var(--main-light-green);
+  background-color: var(--main-light-yellow);
   grid-area: hTitle;
   padding-top: 5px;
 }
 .history {
   grid-area: history;
-  background-color: var(--main-light-green);
+  background-color: var(--main-light-yellow);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .historyDivs {
-  background-color: var(--main-light-green);
+  /* background-color: var(--main-light-green); */
   height: 100%;
   width: 100%;
   display: grid;

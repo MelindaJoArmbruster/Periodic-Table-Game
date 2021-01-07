@@ -206,8 +206,8 @@ class PtGame extends Game {
   }
 
   playersGuessSubmission(num) {
-    if (num < 1 || num > 118 || typeof num !== "number") {
-      throw "That is an invalid atomic number.";
+    if (num < 1 || num > 118 || isNaN(num)) {
+      return "That is an invalid atomic number.";
     } else {
       this.playersGuess = num;
       return this.checkGuess(num);
@@ -215,32 +215,34 @@ class PtGame extends Game {
   }
 
   checkGuess(num) {
+    let feedback = "";
     if (this.playersGuess === this.winningNumber) {
       this.pastGuesses.push(num);
-      return "Eureka! You've identified the unknown element!";
+      feedback = "Eureka! You've identified the unknown element!";
     } else if (this.pastGuesses.includes(num)) {
-      return "You have already tested that element.";
+      feedback = "You have already tested that element.";
     } else {
       this.pastGuesses.push(num);
-      if (this.pastGuesses.length >= 5) {
-        //how to add color and pop lg elem when losing???
-        return "Oh no, you're out of tests! Try again!";
+
+      if (this.difference() < 10) {
+        this.testResults.push("#f17777");
+        feedback = "You're burning up!";
+      } else if (this.difference() < 25) {
+        this.testResults.push("#f9c8c8");
+        feedback = "You're lukewarm!";
+      } else if (this.difference() < 50) {
+        this.testResults.push("#78c1f9");
+        feedback = "You're a bit chilly!";
       } else {
-        if (this.difference() < 10) {
-          this.testResults.push("#f17777");
-          return "You're burning up!";
-        } else if (this.difference() < 25) {
-          this.testResults.push("#f9c8c8");
-          return "You're lukewarm!";
-        } else if (this.difference() < 50) {
-          this.testResults.push("#78c1f9");
-          return "You're a bit chilly!";
-        } else {
-          this.testResults.push("#1e98f6");
-          return "You're ice cold!";
-        }
+        this.testResults.push("#1e98f6");
+        feedback = "You're ice cold!";
       }
     }
+
+    if (this.pastGuesses.length >= 5) {
+      feedback = "Oh no, you're out of tests! Try again!";
+    }
+    return feedback;
   }
 }
 
@@ -257,6 +259,7 @@ function playGame() {
 
   submitButton.addEventListener("click", () => {
     playersGuess = +document.getElementById("textBox").value;
+    //alert(playersGuess + " " + typeof playersGuess);
     document.getElementById("textBox").value = "";
 
     document.getElementById("message").innerHTML = game.playersGuessSubmission(
@@ -275,12 +278,17 @@ function playGame() {
       document.getElementById("hint").style.display = "none";
     }
 
+    let currGuess = game.pastGuesses[game.pastGuesses.length - 1];
+    document.getElementById("number").innerHTML = currGuess;
+    document.getElementById("symbol").innerHTML = ptObj[currGuess][0];
+    document.getElementById("name").innerHTML = ptObj[currGuess][1];
+
+    let currTestResult = game.testResults[game.testResults.length - 1];
+    document.getElementById("largeTile").style.backgroundColor = currTestResult;
+
     game.pastGuesses.forEach((guess, i) => {
-      document.getElementById("number").innerHTML = guess;
       document.getElementById(`t${i}Num`).innerHTML = guess;
-      document.getElementById("symbol").innerHTML = ptObj[guess][0];
       document.getElementById(`t${i}Symbol`).innerHTML = ptObj[guess][0];
-      document.getElementById("name").innerHTML = ptObj[guess][1];
     });
 
     game.testResults.forEach((result, i) => {
