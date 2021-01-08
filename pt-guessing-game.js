@@ -237,6 +237,10 @@ class PtGame extends Game {
         this.testResults.push("#1e98f6");
         feedback = "You're ice cold!";
       }
+      feedback += ` ${this.playersGuess} is the atomic number for ${
+        ptObj[this.playersGuess][1]
+      }, 
+      but unfortunately that's not the unknown. Try another atomic number!`;
     }
 
     if (this.pastGuesses.length >= 5) {
