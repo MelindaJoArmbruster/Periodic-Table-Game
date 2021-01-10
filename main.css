@@ -136,7 +136,7 @@ body {
   text-align: center;
   width: 80%;
   height: 42%;
-  border: 4px solid black;
+  border: 4px solid var(--main-green);
   border-radius: 10px;
 }
 
@@ -155,25 +155,34 @@ body {
 }
 
 .btnFushia {
-  background-color: var(--main-fushia);
+  /* background-color: var(--main-fushia); */
   font-weight: bold;
   color: black;
   width: 80%;
   height: 50%;
-  border: 4px solid black;
+  border: 4px solid var(--main-fushia);
   border-radius: 10px;
+}
+
+.btnFushia:hover {
+  background-color: var(--main-fushia);
+  color: white;
 }
 
 .btnOrange {
-  background-color: var(--main-orange);
+  /* background-color: var(--main-orange); */
   font-weight: bold;
   color: black;
   width: 80%;
   height: 50%;
-  border: 4px solid black;
+  border: 4px solid var(--main-orange);
   border-radius: 10px;
 }
 
+.btnOrange:hover {
+  background-color: var(--main-orange);
+  color: white;
+}
 .hTitle {
   text-align: center;
   font-weight: bold;
@@ -199,7 +208,7 @@ body {
 }
 
 .legend {
-  font-size: 14px;
+  font-size: 12px;
   width: 75%;
   display: flex;
   padding-left: 50px;
@@ -223,6 +232,10 @@ body {
 
 .medRed {
   background-color: var(--main-med-red);
+}
+
+.brightGreen {
+  background-color: var(--main-green);
 }
 
 .test {
@@ -258,9 +271,6 @@ body {
   font-size: 50px;
 }
 
-.extraInfo {
-}
-
 .linkLogo {
   height: 16px;
   width: 16px;
@@ -270,4 +280,21 @@ body {
 .linkText {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
+}
+
+a:link {
+  color: var(--main-green);
+}
+
+a:visited {
+  color: var(--main-green);
+}
+
+a:hover {
+  color: var(--main-fushia);
+  font-weight: bold;
+}
+
+a:active {
+  color: var(--main-green);
 }

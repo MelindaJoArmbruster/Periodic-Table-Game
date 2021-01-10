@@ -218,7 +218,11 @@ class PtGame extends Game {
     let feedback = "";
     if (this.playersGuess === this.winningNumber) {
       this.pastGuesses.push(num);
-      feedback = "Eureka! You've identified the unknown element!";
+      this.testResults.push("#18a774");
+      feedback = "Eureka!";
+      feedback += ` ${this.playersGuess} is the atomic number for ${
+        ptObj[this.playersGuess][1]
+      } and you have successfully identified it!`;
     } else if (this.pastGuesses.includes(num)) {
       feedback = "You have already tested that element.";
     } else {
@@ -244,7 +248,11 @@ class PtGame extends Game {
     }
 
     if (this.pastGuesses.length >= 5) {
-      feedback = "Oh no, you're out of tests! Play again!";
+      feedback = `Oh no, you're out of tests! ${
+        this.playersGuess
+      } is the atomic number for ${
+        ptObj[this.playersGuess][1]
+      }, but it's not the  unknown element. Play again!`;
     }
     return feedback;
   }
@@ -270,10 +278,8 @@ function playGame() {
     );
 
     if (
-      document.getElementById("message").innerHTML ===
-        "Oh no, you're out of tests! Play again!" ||
-      document.getElementById("message").innerHTML ===
-        "Eureka! You've identified the unknown element!"
+      document.getElementById("message").innerHTML.includes("Oh no") ||
+      document.getElementById("message").innerHTML.includes("Eureka!")
     ) {
       document.getElementById("submit").style.display = "none";
       document.getElementById("reset").style.display = "inline";
